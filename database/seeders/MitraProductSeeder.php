@@ -13,35 +13,22 @@ class MitraProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $makanan = [
-            'Nasi Goreng',
-            'Mie Goreng',
-            'Mie Rebus',
-            'Soto Ayam',
-            'Bakso',
-            'Nasi Uduk',
-            'Ayam Geprek',
-            'Roti Bakar',
-            'Sosis Bakar',
-            'Tahu Bakso',
-            'Pempek',
-            'Tahu Crispy',
-            'Kentang Goreng',
-            'Cireng',
-            'Seblak',
-            'Pisang Coklat',
-            'Tempe Mendoan',
-            'Indomie Rebus',
-            'Indomie Goreng',
-            'Martabak Mini'
+        $products = [
+            ['nama' => 'Keripik', 'harga' => 1000],
+            ['nama' => 'Peyek', 'harga' => 1000],
+            ['nama' => 'Pisang Sale', 'harga' => 1000],
+            ['nama' => 'Kue Donat', 'harga' => 2000],
+            ['nama' => 'Kue Biasa', 'harga' => 2000],
+            ['nama' => 'Lainya 1K', 'harga' => 1000],
+            ['nama' => 'Lainya 2K', 'harga' => 2000],
         ];
 
-        foreach ($makanan as $item) {
+        foreach ($products as $item) {
             MitraProduct::create([
-                'nama_produk' => $item,
+                'nama_produk' => $item['nama'],
                 'kategori' => 'makanan',
-                'harga' => fake()->randomFloat(2, 5000, 20000),
-                'kuantitas' => fake()->numberBetween(10, 100),
+                'harga' => $item['harga'],
+                'kuantitas' => 100,
                 'gambar' => null,
                 'status' => fake()->randomElement(['tersedia', 'habis']),
                 'terjual' => fake()->numberBetween(0, 100),
