@@ -7,7 +7,6 @@
         <div class="section-heading d-flex align-items-center justify-content-between dir-rtl">
         <button id="start-transaction" class="btn btn-sm btn-success px-2 py-1 filter-btn">Bill Baru</button>
 
-
         @php
             $kategoriList = collect($products)->pluck('kategori')->unique();
         @endphp

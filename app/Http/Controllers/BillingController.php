@@ -36,23 +36,5 @@ class BillingController extends Controller
         return response()->json(['message' => 'Deleted']);
     }
 
-    public function bayar(Request $request, $kode_trx)
-    {
-        $billing = Billing::where('kode_trx', $kode_trx)->firstOrFail();
 
-        if ($billing->status === 'sudah_bayar') {
-            return redirect()->back()->with('info', 'Transaksi sudah dibayar.');
-        }
-
-        $validated = $request->validate([
-            'metode_bayar' => 'required|in:tunai,qris,bon',
-        ]);
-
-        $billing->update([
-            'status' => 'sudah_bayar',
-            'metode_bayar' => $validated['metode_bayar'],
-        ]);
-
-        return redirect()->back()->with('success', 'Pembayaran berhasil disimpan.');
-    }
 }
